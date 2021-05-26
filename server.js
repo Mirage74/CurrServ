@@ -15,8 +15,15 @@ const router = express.Router()
 app.use(express.static('public'))
 app.use(favicon(__dirname + '/public/favicon.ico'))
 app.use(log)
+//app.use(bodyParser)
 app.use(bodyParserJSON)
 app.use(bodyParserURLEncoded)
+
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
+
 
 
 
@@ -35,3 +42,4 @@ seqRoutes(router)
 
 
 app.listen(process.env.PORT || 4000)
+
